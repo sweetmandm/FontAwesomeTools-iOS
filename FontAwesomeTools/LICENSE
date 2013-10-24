@@ -1,3 +1,10 @@
+Of course, FontAwesomeTools-iOS couldn't exist without the appropriately named FontAwesome:
+Font Awesome by Dave Gandy - http://fontawesome.io
+
+FontAwesome (from v3.0+) is licensed under a non-attribution license. For mor information on FontAwesome licenses, visit their website: http://fortawesome.github.io/Font-Awesome/license/
+
+The stuff specific to FontAwesomeTools-iOS is released under the MIT license, which is non-attribution -- basically, feel free to use this code wherever you want.
+
 The MIT License (MIT)
 
 Copyright (c) 2013 TapTemplate
