@@ -46,7 +46,7 @@ Modify your project's Info.plist file:
 2. Under 'Custom iOS Target Properties', click the last Key in the list, then click on the '+' icon.
 3. For the new key, type 'Fonts provided by application'.
 4. Twirl down the arrow icon, double-tap the right-most box to enter the string value, and type 'FontAwesome.otf'.
-![Info.plist modification](https://raw.github.com/sweetmandm/FontAwesomeTools-iOS/master/img/install-instructions.png)
+![Info.plist modification](https://raw.github.com/sweetmandm/FontAwesomeTools-iOS/master/Example/img/install-instructions.png)
 
 There are already a couple FontAwesome libraries for iOS, here is why I decided to make this one:
 

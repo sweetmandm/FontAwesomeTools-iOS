@@ -20,8 +20,6 @@
 		55A90228181856C100A6E655 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A90227181856C100A6E655 /* XCTest.framework */; };
 		55A90229181856C100A6E655 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A90205181856C100A6E655 /* Foundation.framework */; };
 		55A9022A181856C100A6E655 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A90209181856C100A6E655 /* UIKit.framework */; };
-		55A90232181856C100A6E655 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A90230181856C100A6E655 /* InfoPlist.strings */; };
-		55A90234181856C100A6E655 /* FontAwesome_iOS_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A90233181856C100A6E655 /* FontAwesome_iOS_DemoTests.m */; };
 		55A902541818A7DE00A6E655 /* FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A902521818A7DE00A6E655 /* FontAwesome.m */; };
 		55A902551818A7DE00A6E655 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 55A902531818A7DE00A6E655 /* FontAwesome.otf */; };
 /* End PBXBuildFile section */
@@ -54,9 +52,6 @@
 		55A90220181856C100A6E655 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		55A90226181856C100A6E655 /* FontAwesome-iOS-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FontAwesome-iOS-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A90227181856C100A6E655 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		55A9022F181856C100A6E655 /* FontAwesome-iOS-DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FontAwesome-iOS-DemoTests-Info.plist"; sourceTree = "<group>"; };
-		55A90231181856C100A6E655 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		55A90233181856C100A6E655 /* FontAwesome_iOS_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FontAwesome_iOS_DemoTests.m; sourceTree = "<group>"; };
 		55A902501818A7DE00A6E655 /* font-awesome-codes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "font-awesome-codes.h"; sourceTree = "<group>"; };
 		55A902511818A7DE00A6E655 /* FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesome.h; sourceTree = "<group>"; };
 		55A902521818A7DE00A6E655 /* FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontAwesome.m; sourceTree = "<group>"; };
@@ -91,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				55A9020B181856C100A6E655 /* FontAwesome-iOS-Demo */,
-				55A9022D181856C100A6E655 /* FontAwesome-iOS-DemoTests */,
 				55A90204181856C100A6E655 /* Frameworks */,
 				55A90203181856C100A6E655 /* Products */,
 			);
@@ -140,24 +134,6 @@
 				55A9020E181856C100A6E655 /* InfoPlist.strings */,
 				55A90211181856C100A6E655 /* main.m */,
 				55A90213181856C100A6E655 /* FontAwesome-iOS-Demo-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		55A9022D181856C100A6E655 /* FontAwesome-iOS-DemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				55A90233181856C100A6E655 /* FontAwesome_iOS_DemoTests.m */,
-				55A9022E181856C100A6E655 /* Supporting Files */,
-			);
-			path = "FontAwesome-iOS-DemoTests";
-			sourceTree = "<group>";
-		};
-		55A9022E181856C100A6E655 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				55A9022F181856C100A6E655 /* FontAwesome-iOS-DemoTests-Info.plist */,
-				55A90230181856C100A6E655 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -262,7 +238,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55A90232181856C100A6E655 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +259,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55A90234181856C100A6E655 /* FontAwesome_iOS_DemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,14 +295,6 @@
 				55A9021B181856C100A6E655 /* Base */,
 			);
 			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
-		55A90230181856C100A6E655 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55A90231181856C100A6E655 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
