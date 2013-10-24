@@ -1,6 +1,6 @@
 //
 //  font-awesome-codes.h
-//  FontAwesomeTools-iOS is Copyright 2013 TapTemplate and released under the Apache license.
+//  FontAwesomeTools-iOS is Copyright 2013 TapTemplate and released under the MIT license.
 //  www.taptemplate.com
 //
 

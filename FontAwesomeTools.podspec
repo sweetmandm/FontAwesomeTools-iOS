@@ -5,9 +5,9 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/sweetmandm/FontAwesomeTools-iOS"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "David Sweetman" => "david@davidsweetman.com" }
-  s.source       = { :git => "https://github.com/sweetmandm/FontAwesomeTools-iOS", :tag => "1.0" }
+  s.source       = { :git => "https://github.com/sweetmandm/FontAwesomeTools-iOS.git", :tag => "1.0" }
   s.platform     = :ios, '5.0'
-  s.source_files = 'FontAwesomeTools-iOS/**/*.{h,m}'
-  s.resource  = "fontawesome-webfont.ttf"
+  s.source_files = 'FontAwesomeTools/**/*.{h,m}'
+  s.resource     = "FontAwesomeTools/FontAwesome.otf"
   s.requires_arc = true
 end
