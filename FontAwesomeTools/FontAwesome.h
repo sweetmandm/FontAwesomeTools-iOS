@@ -19,24 +19,27 @@
 + (UIFont*)fontWithSize:(CGFloat)size;
 
 /*  Convenience method to make a sized-to-fit UILabel containing an icon in the given font size and color.
- *  Example: UILabel *label = [FontAwesome labelWithIcon:fa_check size: 14.0f color:[UIColor blackColor]];
  */
-+ (UILabel*)labelWithIcon:(NSString*)fa_icon size:(CGFloat)size color:(UIColor*)color;
++ (UILabel*)labelWithIcon:(NSString*)fa_icon
+                     size:(CGFloat)size
+                    color:(UIColor*)color;
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
-// Uses NSStringDrawing, which is only available in iOS 6.0+
+
 //================================
 // Image Methods
 //================================
 
 /* Make the image and icon the same size:
  */
-+ (UIImage*)imageWithIcon:(NSString*)fa_icon size:(CGFloat)size color:(UIColor*)color;
++ (UIImage*)imageWithIcon:(NSString*)fa_icon
+                     size:(CGFloat)size
+                    color:(UIColor*)color;
 
 /* The image and the icon inside it can be configured to different sizes:
  */
-+ (UIImage*)imageWithIcon:(NSString*)fa_icon iconColor:(UIColor*)color iconSize:(CGFloat)iconSize imageSize:(CGSize)imageSize;
-
-#endif
++ (UIImage*)imageWithIcon:(NSString*)fa_icon
+                iconColor:(UIColor*)color
+                 iconSize:(CGFloat)iconSize
+                imageSize:(CGSize)imageSize;
 
 @end

@@ -8,6 +8,7 @@
 
 @implementation FontAwesome
 
+
 //================================
 // Font and Label Methods
 //================================
@@ -17,7 +18,9 @@
     return [UIFont fontWithName:@"FontAwesome" size:size];
 }
 
-+ (UILabel*)labelWithIcon:(NSString*)fa_icon size:(CGFloat)size color:(UIColor*)color
++ (UILabel*)labelWithIcon:(NSString*)fa_icon
+                     size:(CGFloat)size
+                    color:(UIColor*)color
 {
     UILabel *label = [[UILabel alloc] init];
     label.font = [FontAwesome fontWithSize:size];
@@ -25,25 +28,34 @@
     label.textColor = color;
     label.backgroundColor = [UIColor clearColor];
     [label sizeToFit];
-    // FontAwesome will be silent through VoiceOver, but the Label is still selectable through VoiceOver. This can cause a usability issue because a visually impaired user might navigate to the label but get no audible feedback that the navigation happened. So hide the label for VoiceOver by default - if your label should be descriptive, un-hide it explicitly after creating it, and then set its accessibiltyLabel.
+    // NOTE: FontAwesome will be silent through VoiceOver, but the Label is still selectable through VoiceOver. This can cause a usability issue because a visually impaired user might navigate to the label but get no audible feedback that the navigation happened. So hide the label for VoiceOver by default - if your label should be descriptive, un-hide it explicitly after creating it, and then set its accessibiltyLabel.
     label.accessibilityElementsHidden = YES;
     return label;
 }
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
-// Uses NSStringDrawing, which is only available in iOS 6.0+
+
 //================================
 // Image Methods
 //================================
 
-+ (UIImage*)imageWithIcon:(NSString*)fa_icon size:(CGFloat)size color:(UIColor*)color
++ (UIImage*)imageWithIcon:(NSString*)fa_icon
+                     size:(CGFloat)size
+                    color:(UIColor*)color
 {
-    return [FontAwesome imageWithIcon:fa_icon iconColor:color iconSize:size imageSize:CGSizeMake(size, size)];
+    return [FontAwesome imageWithIcon:fa_icon
+                            iconColor:color
+                             iconSize:size
+                            imageSize:CGSizeMake(size, size)];
 }
 
-+ (UIImage*)imageWithIcon:(NSString*)fa_icon iconColor:(UIColor*)iconColor iconSize:(CGFloat)iconSize imageSize:(CGSize)imageSize;
++ (UIImage*)imageWithIcon:(NSString*)fa_icon
+                iconColor:(UIColor*)iconColor
+                 iconSize:(CGFloat)iconSize
+                imageSize:(CGSize)imageSize;
 {
     NSAssert(fa_icon, @"You must specify an icon from font-awesome-codes.h.");
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
     if (!iconColor) { iconColor = [UIColor blackColor]; }
     
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
@@ -56,13 +68,28 @@
     CGRect boundingRect = [attString boundingRectWithSize:CGSizeMake(iconSize, iconSize) options:0 context:ctx];
     // draw the icon string into the image:
     [attString drawInRect:CGRectMake((imageSize.width/2.0f) - boundingRect.size.width/2.0f,
-                                     (imageSize.height/2.0f) - iconSize/2.0f,
+                                     (imageSize.height/2.0f) - boundingRect.size.height/2.0f,
                                      imageSize.width,
                                      imageSize.height)];
     UIImage *iconImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return iconImage;
-}
+#else
+#if DEBUG
+    NSLog(@" [ FontAwesomeTools ] WARNING: Using lower-res iOS 5-compatible image rendering.");
 #endif
+    UILabel *iconLabel = [FontAwesome labelWithIcon:fa_icon size:iconSize color:iconColor];
+    UIGraphicsBeginImageContext(imageSize);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(ctx,
+                          (imageSize.width/2.0f) - iconLabel.frame.size.width/2.0f,
+                          (imageSize.height/2.0f) - iconLabel.frame.size.height/2.0f);
+    [[iconLabel layer] renderInContext: UIGraphicsGetCurrentContext()];
+    UIImage *iconImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CGContextRelease(ctx);
+    return iconImg;
+#endif
+}
 
 @end

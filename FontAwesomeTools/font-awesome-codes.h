@@ -6,7 +6,10 @@
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
  readers do not read off random characters that represent icons 
- Note: this includes VoiceOver; labels made with these codes will be silent */
+ Note: this includes VoiceOver; labels made with these codes will be silent
+
+Browse preview images of the icons at http://fortawesome.github.io/Font-Awesome/icons/
+*/
 #define fa_glass @"\uf000"
 #define fa_music @"\uf001"
 #define fa_search @"\uf002"
