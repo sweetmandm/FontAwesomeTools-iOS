@@ -79,16 +79,24 @@
     NSLog(@" [ FontAwesomeTools ] WARNING: Using lower-res iOS 5-compatible image rendering.");
 #endif
     UILabel *iconLabel = [FontAwesome labelWithIcon:fa_icon size:iconSize color:iconColor];
-    UIGraphicsBeginImageContext(imageSize);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(ctx,
-                          (imageSize.width/2.0f) - iconLabel.frame.size.width/2.0f,
-                          (imageSize.height/2.0f) - iconLabel.frame.size.height/2.0f);
-    [[iconLabel layer] renderInContext: UIGraphicsGetCurrentContext()];
-    UIImage *iconImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *iconImage = nil;
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 1.0);
+    {
+        CGContextRef imageContext = UIGraphicsGetCurrentContext();
+        if (imageContext != NULL) {
+            UIGraphicsPushContext(imageContext);
+            {
+                CGContextTranslateCTM(imageContext,
+                                      (imageSize.width/2.0f) - iconLabel.frame.size.width/2.0f,
+                                      (imageSize.height/2.0f) - iconLabel.frame.size.height/2.0f);
+                [[iconLabel layer] renderInContext: imageContext];
+            }
+            UIGraphicsPopContext();
+        }
+        iconImage = UIGraphicsGetImageFromCurrentImageContext();
+    }
     UIGraphicsEndImageContext();
-    CGContextRelease(ctx);
-    return iconImg;
+    return iconImage;
 #endif
 }
 
