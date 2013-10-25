@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = "FontAwesomeTools"
-  s.version      = "1.0"
+  s.version      = "1.1"
   s.summary      = "FontAwesomeTools-iOS allows you to easily use FontAwesome icons in your iOS projects."
   s.homepage     = "https://github.com/sweetmandm/FontAwesomeTools-iOS"
-  s.license      = { :type => 'MIT', :file => 'LICENSE' }
+  s.license      = { :type => 'MIT', :file => 'FontAwesomeTools/LICENSE' }
   s.author       = { "David Sweetman" => "david@davidsweetman.com" }
   s.source       = { :git => "https://github.com/sweetmandm/FontAwesomeTools-iOS.git", :tag => "1.1" }
   s.platform     = :ios, '5.0'
