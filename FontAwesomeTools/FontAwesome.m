@@ -55,7 +55,7 @@
 {
     NSAssert(fa_icon, @"You must specify an icon from font-awesome-codes.h.");
     
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+#ifdef __IPHONE_6_0
     if (!iconColor) { iconColor = [UIColor blackColor]; }
     
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
@@ -76,7 +76,7 @@
     return iconImage;
 #else
 #if DEBUG
-    NSLog(@" [ FontAwesomeTools ] WARNING: Using lower-res iOS 5-compatible image rendering.");
+    NSLog(@" [ FontAwesomeTools ] Using lower-res iOS 5-compatible image rendering.");
 #endif
     UILabel *iconLabel = [FontAwesome labelWithIcon:fa_icon size:iconSize color:iconColor];
     UIImage *iconImage = nil;
