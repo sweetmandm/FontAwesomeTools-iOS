@@ -16,6 +16,14 @@ Make a UILabel with a FontAwesome Icon:
 
     UILabel *label = [FontAwesome labelWithIcon:fa_cutlery size:20.0f color:[UIColor blackColor]];
 
+Adjust an existing UILabel to show a FontAwesome Icon:
+	
+	[FontAwesome label:existingLabel
+      		   setIcon:fa_cutlery
+         		  size:20.0f
+        		 color:[UIColor blackColor]
+    		 sizeToFit:YES];
+
 Render a FontAwesome Icon in a UIImage:
 
         UIImage *icon = [FontAwesome imageWithIcon:fa_cutlery 

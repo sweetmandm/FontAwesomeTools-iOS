@@ -23,14 +23,25 @@
                     color:(UIColor*)color
 {
     UILabel *label = [[UILabel alloc] init];
+    [FontAwesome label:label setIcon:fa_icon size:size color:color sizeToFit:YES];
+    return label;
+}
+
++ (void)label:(UILabel*)label
+      setIcon:(NSString*)fa_icon
+         size:(CGFloat)size
+        color:(UIColor*)color
+    sizeToFit:(BOOL)shouldSizeToFit
+{
     label.font = [FontAwesome fontWithSize:size];
     label.text = fa_icon;
     label.textColor = color;
     label.backgroundColor = [UIColor clearColor];
-    [label sizeToFit];
-    // NOTE: FontAwesome will be silent through VoiceOver, but the Label is still selectable through VoiceOver. This can cause a usability issue because a visually impaired user might navigate to the label but get no audible feedback that the navigation happened. So hide the label for VoiceOver by default - if your label should be descriptive, un-hide it explicitly after creating it, and then set its accessibiltyLabel.
+    if (shouldSizeToFit) {
+        [label sizeToFit];
+    }
+    // NOTE: FontAwesome icons will be silent through VoiceOver, but the Label is still selectable through VoiceOver. This can cause a usability issue because a visually impaired user might navigate to the label but get no audible feedback that the navigation happened. So hide the label for VoiceOver by default - if your label should be descriptive, un-hide it explicitly after creating it, and then set its accessibiltyLabel.
     label.accessibilityElementsHidden = YES;
-    return label;
 }
 
 
@@ -39,13 +50,13 @@
 //================================
 
 + (UIImage*)imageWithIcon:(NSString*)fa_icon
-                     size:(CGFloat)size
-                    color:(UIColor*)color
+                iconColor:(UIColor*)iconColor
+                 iconSize:(CGFloat)iconSize
 {
     return [FontAwesome imageWithIcon:fa_icon
-                            iconColor:color
-                             iconSize:size
-                            imageSize:CGSizeMake(size, size)];
+                            iconColor:iconColor
+                             iconSize:iconSize
+                            imageSize:CGSizeMake(iconSize, iconSize)];
 }
 
 + (UIImage*)imageWithIcon:(NSString*)fa_icon
@@ -99,5 +110,12 @@
         return iconImage;
     }
 }
+
+// DEPRECATED - Instead use +imageWithIcon:iconColor:iconSize:
++ (UIImage*)imageWithIcon:(NSString*)fa_icon size:(CGFloat)size color:(UIColor*)color
+{
+    return [FontAwesome imageWithIcon:fa_icon iconColor:color iconSize:size imageSize:CGSizeMake(size, size)];
+}
+
 
 @end
