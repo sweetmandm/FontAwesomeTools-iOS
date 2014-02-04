@@ -18,6 +18,10 @@
  */
 + (UIFont*)fontWithSize:(CGFloat)size;
 
+/*!  Convenience method to get a custom font.
+ */
++ (UIFont*)fontNamed:(NSString*)font withSize:(CGFloat)size;
+
 /*! Make a sized-to-fit UILabel containing an icon in the given font size and color.
  */
 + (UILabel*)labelWithIcon:(NSString*)fa_icon
@@ -49,6 +53,13 @@
                  iconSize:(CGFloat)iconSize
                 imageSize:(CGSize)imageSize;
 
+/*! The image and the icon inside it can be from a custom font:
+ */
++ (UIImage*)imageWithFontNamed:(NSString*)font
+                          icon:(NSString*)fa_icon
+                     iconColor:(UIColor*)iconColor
+                      iconSize:(CGFloat)iconSize
+                     imageSize:(CGSize)imageSize;
 
 /*! NOTE: This method is deprecated! Use -imageWithIcon:iconColor:iconSize: instead. It does exactly the same thing, but I got fed up with it not matching the phrasing of the second UIImage creation method.
  */
