@@ -35,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5549042A18A1E5050075047F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		55A90202181856C100A6E655 /* FontAwesome-iOS-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FontAwesome-iOS-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A90205181856C100A6E655 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55A90207181856C100A6E655 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -114,6 +115,7 @@
 		55A9020B181856C100A6E655 /* FontAwesome-iOS-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				5549042A18A1E5050075047F /* README.md */,
 				55A9024F1818A7DE00A6E655 /* FontAwesomeTools */,
 				55A90214181856C100A6E655 /* AppDelegate.h */,
 				55A90215181856C100A6E655 /* AppDelegate.m */,

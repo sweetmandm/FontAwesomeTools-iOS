@@ -31,6 +31,13 @@ Render a FontAwesome Icon in a UIImage:
                                           iconSize:60.0f 
                                          imageSize:CGSizeMake(90.0f, 90.0f)];
 
+Or if you happen to have an alternate icon font, and just want to use the image rendering code with your own font:
+
+        UIImage *icon2 = [FontAwesome imageWithText:@"\uf190"
+                                               font:[UIFont fontWithName:@"FontAwesome" size:60.0f]
+                                          iconColor:[UIColor redColor]
+                                          imageSize:CGSizeMake(90.0f, 90.0f)];
+
 
 ### Installation Step 1:
 
