@@ -18,11 +18,6 @@
     return [UIFont fontWithName:@"FontAwesome" size:size];
 }
 
-+ (UIFont*)fontNamed:(NSString*)font withSize:(CGFloat)size
-{
-    return [UIFont fontWithName:font size:size];
-}
-
 + (UILabel*)labelWithIcon:(NSString*)fa_icon
                      size:(CGFloat)size
                     color:(UIColor*)color
@@ -72,16 +67,14 @@
 {
     NSAssert(fa_icon, @"You must specify an icon from font-awesome-codes.h.");
     return [self imageWithText:fa_icon
-                          font:@"FontAwesome"
+                          font:[FontAwesome fontWithSize:iconSize]
                      iconColor:iconColor
-                      iconSize:iconSize
                      imageSize:imageSize];
 }
 
 + (UIImage*)imageWithText:(NSString*)characterCodeString
-                     font:(NSString*)font
+                     font:(UIFont*)font
                 iconColor:(UIColor*)iconColor
-                 iconSize:(CGFloat)iconSize
                 imageSize:(CGSize)imageSize;
 {
     NSAssert(characterCodeString, @"You must specify a character code, such as \\uf190.");
@@ -92,11 +85,11 @@
         UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
         NSAttributedString* attString = [[NSAttributedString alloc]
                                          initWithString:characterCodeString
-                                         attributes:@{NSFontAttributeName: [FontAwesome fontNamed:font withSize:iconSize],
+                                         attributes:@{NSFontAttributeName: font,
                                                       NSForegroundColorAttributeName : iconColor}];
         // get the target bounding rect in order to center the icon within the UIImage:
         NSStringDrawingContext *ctx = [[NSStringDrawingContext alloc] init];
-        CGRect boundingRect = [attString boundingRectWithSize:CGSizeMake(iconSize, iconSize) options:0 context:ctx];
+        CGRect boundingRect = [attString boundingRectWithSize:CGSizeMake(font.pointSize, font.pointSize) options:0 context:ctx];
         // draw the icon string into the image:
         [attString drawInRect:CGRectMake((imageSize.width/2.0f) - boundingRect.size.width/2.0f,
                                          (imageSize.height/2.0f) - boundingRect.size.height/2.0f,
@@ -109,7 +102,7 @@
 #if DEBUG
         NSLog(@" [ FontAwesomeTools ] Using lower-res iOS 5-compatible image rendering.");
 #endif
-        UILabel *iconLabel = [FontAwesome labelWithIcon:characterCodeString size:iconSize color:iconColor];
+        UILabel *iconLabel = [FontAwesome labelWithIcon:characterCodeString size:font.pointSize color:iconColor];
         UIImage *iconImage = nil;
         UIGraphicsBeginImageContextWithOptions(imageSize, NO, 1.0);
         {
