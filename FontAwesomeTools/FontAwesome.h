@@ -55,11 +55,11 @@
 
 /*! The image and the icon inside it can be from a custom font:
  */
-+ (UIImage*)imageWithFontNamed:(NSString*)font
-                          icon:(NSString*)fa_icon
-                     iconColor:(UIColor*)iconColor
-                      iconSize:(CGFloat)iconSize
-                     imageSize:(CGSize)imageSize;
++ (UIImage*)imageWithText:(NSString*)characterCodeString
+                     font:(NSString*)font
+                iconColor:(UIColor*)iconColor
+                 iconSize:(CGFloat)iconSize
+                imageSize:(CGSize)imageSize;
 
 /*! NOTE: This method is deprecated! Use -imageWithIcon:iconColor:iconSize: instead. It does exactly the same thing, but I got fed up with it not matching the phrasing of the second UIImage creation method.
  */

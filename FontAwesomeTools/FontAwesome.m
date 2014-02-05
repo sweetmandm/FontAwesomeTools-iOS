@@ -18,6 +18,11 @@
     return [UIFont fontWithName:@"FontAwesome" size:size];
 }
 
++ (UIFont*)fontNamed:(NSString*)font withSize:(CGFloat)size
+{
+    return [UIFont fontWithName:font size:size];
+}
+
 + (UILabel*)labelWithIcon:(NSString*)fa_icon
                      size:(CGFloat)size
                     color:(UIColor*)color
@@ -44,11 +49,6 @@
     label.accessibilityElementsHidden = YES;
 }
 
-+ (UIFont*)fontNamed:(NSString*)font withSize:(CGFloat)size
-{
-    return [UIFont fontWithName:font size:size];
-}
-
 
 
 //================================
@@ -70,27 +70,28 @@
                  iconSize:(CGFloat)iconSize
                 imageSize:(CGSize)imageSize;
 {
-    return [self imageWithFontNamed:@"FontAwesome"
-                               icon:fa_icon
-                          iconColor:iconColor
-                           iconSize:iconSize
-                          imageSize:imageSize];
+    NSAssert(fa_icon, @"You must specify an icon from font-awesome-codes.h.");
+    return [self imageWithText:fa_icon
+                          font:@"FontAwesome"
+                     iconColor:iconColor
+                      iconSize:iconSize
+                     imageSize:imageSize];
 }
 
-+ (UIImage*)imageWithFontNamed:(NSString*)font
-                          icon:(NSString*)fa_icon
-                     iconColor:(UIColor*)iconColor
-                      iconSize:(CGFloat)iconSize
-                     imageSize:(CGSize)imageSize;
++ (UIImage*)imageWithText:(NSString*)characterCodeString
+                     font:(NSString*)font
+                iconColor:(UIColor*)iconColor
+                 iconSize:(CGFloat)iconSize
+                imageSize:(CGSize)imageSize;
 {
-    NSAssert(fa_icon, @"You must specify an icon from font-awesome-codes.h.");
-    
+    NSAssert(characterCodeString, @"You must specify a character code, such as \\uf190.");
+
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6) {
         if (!iconColor) { iconColor = [UIColor blackColor]; }
         
         UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
         NSAttributedString* attString = [[NSAttributedString alloc]
-                                         initWithString:fa_icon
+                                         initWithString:characterCodeString
                                          attributes:@{NSFontAttributeName: [FontAwesome fontNamed:font withSize:iconSize],
                                                       NSForegroundColorAttributeName : iconColor}];
         // get the target bounding rect in order to center the icon within the UIImage:
@@ -108,7 +109,7 @@
 #if DEBUG
         NSLog(@" [ FontAwesomeTools ] Using lower-res iOS 5-compatible image rendering.");
 #endif
-        UILabel *iconLabel = [FontAwesome labelWithIcon:fa_icon size:iconSize color:iconColor];
+        UILabel *iconLabel = [FontAwesome labelWithIcon:characterCodeString size:iconSize color:iconColor];
         UIImage *iconImage = nil;
         UIGraphicsBeginImageContextWithOptions(imageSize, NO, 1.0);
         {
