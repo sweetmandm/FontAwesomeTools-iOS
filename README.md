@@ -69,5 +69,5 @@ There are already a couple FontAwesome libraries for iOS, here is why I decided 
 - *Prefer a naming system as similar as possible to the original FontAwesome CSS.* For example, the icon title for 'fa-glass' becomes 'fa_glass', since dashes are disallowed in c macro names.
 - *Reduced Complexity.* I thought I could improve on the available implementations, and hopefully that will make FontAwesomeTools-iOS easier for you to work with.
 
-## Shameles Plug:
+## Shameless Plug:
 I built this for inclusion in my app design templates available at [TapTemplate](http://www.taptemplate.com)
